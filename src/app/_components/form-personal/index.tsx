@@ -1,12 +1,12 @@
 import React from "react";
-import FirstNameInput from "./first-name-input";
-import LastNameInput from "./last-name-input";
-import EmailInput from "./email-input";
-import CountryInput from "./country-input";
-import StreetAddressInput from "./street-address-input";
-import CityInput from "./city-input";
-import StateInput from "./state-input";
-import PostcodeInput from "./postcode-input";
+import FirstNameInput from "../form-inputs/first-name-input";
+import LastNameInput from "../form-inputs/last-name-input";
+import EmailInput from "../form-inputs/email-input";
+import CountryInput from "../form-inputs/country-input";
+import StreetAddressInput from "../form-inputs/street-address-input";
+import CityInput from "../form-inputs/city-input";
+import StateInput from "../form-inputs/state-input";
+import PostcodeInput from "../form-inputs/postcode-input";
 
 function FormPersonal() {
   return (

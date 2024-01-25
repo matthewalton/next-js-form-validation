@@ -1,6 +1,6 @@
 import React from "react";
-import UsernameInput from "./username-input";
-import AboutInput from "./about-input";
+import UsernameInput from "../form-inputs/username-input";
+import AboutInput from "../form-inputs/about-input";
 
 function FormProfile() {
   return (
