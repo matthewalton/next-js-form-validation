@@ -5,7 +5,7 @@ import FormButtons from "../form-buttons";
 import { useFormState } from "react-dom";
 import { registerUser } from "./action";
 
-const initialState = {
+const initialState: { message?: string; errors?: any } = {
   message: "",
   errors: {},
 };
@@ -43,6 +43,11 @@ function MyForm() {
               focus:ring-1 sm:text-sm sm:leading-6"
               required
             />
+            {formState?.errors?.username && (
+              <p className="mt-2 text-pink-600 text-sm">
+                {formState.errors.username}
+              </p>
+            )}
           </div>
         </div>
 
@@ -64,6 +69,11 @@ function MyForm() {
               required
             />
           </div>
+          {formState?.errors?.email && (
+            <p className="mt-2 text-pink-600 text-sm">
+              {formState.errors.email}
+            </p>
+          )}
         </div>
 
         <div className="sm:col-span-3">
@@ -84,6 +94,11 @@ function MyForm() {
               required
             />
           </div>
+          {formState?.errors?.password && (
+            <p className="mt-2 text-pink-600 text-sm">
+              {formState.errors.password}
+            </p>
+          )}
         </div>
 
         <div className="sm:col-span-3">
@@ -104,6 +119,11 @@ function MyForm() {
               required
             />
           </div>
+          {formState?.errors?.confirmPassword && (
+            <p className="mt-2 text-pink-600 text-sm">
+              {formState.errors.confirmPassword}
+            </p>
+          )}
         </div>
       </div>
 
