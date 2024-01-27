@@ -18,7 +18,10 @@ export async function registerUser(
   formData: FormData
 ): Promise<FormState | null> {
   const validatedFields = schema.safeParse({
+    username: formData.get("username"),
     email: formData.get("email"),
+    password: formData.get("password"),
+    confirmPassword: formData.get("confirm-password"),
   });
 
   if (!validatedFields.success) {

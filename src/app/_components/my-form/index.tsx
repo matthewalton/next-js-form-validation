@@ -4,9 +4,6 @@ import React from "react";
 import FormButtons from "../form-buttons";
 import { useFormState } from "react-dom";
 import { registerUser } from "./action";
-import EmailInput from "../form-inputs/email-input";
-import UsernameInput from "../form-inputs/username-input";
-import PasswordInput from "../form-inputs/password-input";
 
 const initialState = {
   message: "",
@@ -30,14 +27,80 @@ function MyForm() {
 
       <div className="mt-5 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-6">
         <div className="sm:col-span-6">
-          <UsernameInput />
+          <label
+            htmlFor="username"
+            className="block text-sm font-medium leading-6 text-gray-900"
+          >
+            Username
+          </label>
+          <div className="mt-2">
+            <input
+              type="text"
+              name="username"
+              id="username"
+              autoComplete="username"
+              className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 sm:text-sm sm:leading-6"
+              required
+            />
+          </div>
         </div>
 
         <div className="sm:col-span-6">
-          <EmailInput />
+          <label
+            htmlFor="email"
+            className="block text-sm font-medium leading-6 text-gray-900"
+          >
+            Email address
+          </label>
+          <div className="mt-2">
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 sm:text-sm sm:leading-6"
+              required
+            />
+          </div>
         </div>
 
-        <PasswordInput />
+        <div className="sm:col-span-3">
+          <label
+            htmlFor="password"
+            className="block text-sm font-medium leading-6 text-gray-900"
+          >
+            Password
+          </label>
+          <div className="mt-2">
+            <input
+              type="password"
+              name="password"
+              id="password"
+              autoComplete="password"
+              className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 sm:text-sm sm:leading-6"
+              required
+            />
+          </div>
+        </div>
+
+        <div className="sm:col-span-3">
+          <label
+            htmlFor="confirm-password"
+            className="block text-sm font-medium leading-6 text-gray-900"
+          >
+            Confirm password
+          </label>
+          <div className="mt-2">
+            <input
+              type="password"
+              name="confirm-password"
+              id="confirm-password"
+              autoComplete="password"
+              className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 sm:text-sm sm:leading-6"
+              required
+            />
+          </div>
+        </div>
       </div>
 
       <p aria-live="polite" className="sr-only">
