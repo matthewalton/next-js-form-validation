@@ -33,7 +33,7 @@ export async function registerUser(
 
   if (validatedFields.data.password !== validatedFields.data.confirmPassword) {
     return {
-      errors: { confirmPassword: "Passwords do not match" },
+      errors: { password: "Passwords do not match" },
     };
   }
 

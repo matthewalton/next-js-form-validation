@@ -39,8 +39,12 @@ function MyForm() {
               name="username"
               id="username"
               autoComplete="username"
-              className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 
-              focus:ring-1 sm:text-sm sm:leading-6"
+              className={
+                `block w-full rounded-md py-1.5 px-2 shadow-sm ring-1 focus:ring-2 focus:outline-none placeholder:text-gray-400 sm:text-sm sm:leading-6 ` +
+                (formState?.errors?.username
+                  ? "ring-pink-600 text-pink-600"
+                  : "ring-gray-300 text-gray-900")
+              }
               required
             />
             {formState?.errors?.username && (
@@ -64,8 +68,12 @@ function MyForm() {
               name="email"
               type="email"
               autoComplete="email"
-              className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 
-              focus:ring-1 sm:text-sm sm:leading-6"
+              className={
+                `block w-full rounded-md py-1.5 px-2 shadow-sm ring-1 focus:ring-2 focus:outline-none placeholder:text-gray-400 sm:text-sm sm:leading-6 ` +
+                (formState?.errors?.email
+                  ? "ring-pink-600 text-pink-600"
+                  : "ring-gray-300 text-gray-900")
+              }
               required
             />
           </div>
@@ -89,8 +97,12 @@ function MyForm() {
               name="password"
               id="password"
               autoComplete="password"
-              className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 
-              focus:ring-1 sm:text-sm sm:leading-6"
+              className={
+                `block w-full rounded-md py-1.5 px-2 shadow-sm ring-1 focus:ring-2 focus:outline-none placeholder:text-gray-400 sm:text-sm sm:leading-6 ` +
+                (formState?.errors?.password
+                  ? "ring-pink-600 text-pink-600"
+                  : "ring-gray-300 text-gray-900")
+              }
               required
             />
           </div>
@@ -114,16 +126,15 @@ function MyForm() {
               name="confirm-password"
               id="confirm-password"
               autoComplete="password"
-              className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 
-              focus:ring-1 sm:text-sm sm:leading-6"
+              className={
+                `block w-full rounded-md py-1.5 px-2 shadow-sm ring-1 focus:ring-2 focus:outline-none placeholder:text-gray-400 sm:text-sm sm:leading-6 ` +
+                (formState?.errors?.password
+                  ? "ring-pink-600 text-pink-600"
+                  : "ring-gray-300 text-gray-900")
+              }
               required
             />
           </div>
-          {formState?.errors?.confirmPassword && (
-            <p className="mt-2 text-pink-600 text-sm">
-              {formState.errors.confirmPassword}
-            </p>
-          )}
         </div>
       </div>
 
