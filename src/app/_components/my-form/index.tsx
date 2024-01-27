@@ -8,6 +8,7 @@ import { registerUser } from "./action";
 
 const initialState = {
   message: "",
+  errors: {},
 };
 
 function MyForm() {
