@@ -3,14 +3,15 @@
 import { z } from "zod";
 
 const schema = z.object({
-  email: z.string({
-    invalid_type_error: "Invalid Email",
-  }),
+  username: z.string(),
+  email: z.string().email(),
+  password: z.string(),
+  confirmPassword: z.string(),
 });
 
 interface FormState {
   message?: string;
-  errors?: { email?: string[] | undefined };
+  errors?: {};
 }
 
 export async function registerUser(
@@ -27,6 +28,12 @@ export async function registerUser(
   if (!validatedFields.success) {
     return {
       errors: validatedFields.error.flatten().fieldErrors,
+    };
+  }
+
+  if (validatedFields.data.password !== validatedFields.data.confirmPassword) {
+    return {
+      errors: { confirmPassword: "Passwords do not match" },
     };
   }
 
