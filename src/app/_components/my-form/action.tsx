@@ -18,7 +18,7 @@ interface FormState {
 export async function registerUser(
   prevFormState: FormState | null,
   formData: FormData
-): Promise<FormState | null> {
+): Promise<FormState> {
   try {
     const validatedFields = schema.safeParse({
       username: formData.get("username"),
