@@ -139,9 +139,11 @@ function MyForm() {
         </div>
       </div>
 
-      <p aria-live="polite" className="sr-only">
-        {formState?.message}
-      </p>
+      {formState?.message && (
+        <p className="text-sm text-pink-600 mt-5 text-right">
+          {formState.message}
+        </p>
+      )}
 
       <FormButtons />
     </form>
