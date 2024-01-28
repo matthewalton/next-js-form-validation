@@ -19,7 +19,7 @@ function MyForm() {
         User Registration
       </h2>
       <p className="mt-1 text-sm leading-6 text-gray-600">
-        Please enter your details to complete registration. (Just a demo - not
+        Please enter your details to complete registration. (Just a demo - no
         details are collected.)
       </p>
 
