@@ -48,7 +48,7 @@ function MyForm() {
               required
             />
             {formState?.errors?.username && (
-              <p className="mt-2 text-pink-600 text-sm">
+              <p className="mt-2 text-pink-600 text-xs">
                 {formState.errors.username}
               </p>
             )}
@@ -78,7 +78,7 @@ function MyForm() {
             />
           </div>
           {formState?.errors?.email && (
-            <p className="mt-2 text-pink-600 text-sm">
+            <p className="mt-2 text-pink-600 text-xs">
               {formState.errors.email}
             </p>
           )}
@@ -107,7 +107,7 @@ function MyForm() {
             />
           </div>
           {formState?.errors?.password && (
-            <p className="mt-2 text-pink-600 text-sm text-wrap">
+            <p className="mt-2 text-pink-600 text-xs">
               {formState.errors.password}
             </p>
           )}

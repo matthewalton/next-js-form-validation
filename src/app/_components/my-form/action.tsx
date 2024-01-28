@@ -4,10 +4,10 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 
 const schema = z.object({
-  username: z.string(),
-  email: z.string().email(),
-  password: z.string().min(8, "Password must be at least 8 characters long"),
-  confirmPassword: z.string(),
+  username: z.string().max(30, "Username must be under 30 characters"),
+  email: z.string().email().max(50, "Email must be under 30 characters"),
+  password: z.string().min(8).max(30, "Password must be under 30 characters"),
+  confirmPassword: z.string().min(8).max(30),
 });
 
 interface FormState {
