@@ -10,9 +10,9 @@ const schema = z.object({
   confirmPassword: z.string().min(8).max(30),
 });
 
-interface FormState {
+export interface FormState {
   message?: string;
-  errors?: {};
+  errors?: any;
 }
 
 export async function registerUser(
