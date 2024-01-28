@@ -5,10 +5,7 @@ import FormButtons from "../form-buttons";
 import { useFormState } from "react-dom";
 import { registerUser } from "./action";
 
-const initialState: { message?: string; errors?: any } = {
-  message: "",
-  errors: {},
-};
+const initialState: { message?: string; errors?: any } | null = null;
 
 function MyForm() {
   const [formState, formAction] = useFormState(registerUser, initialState);
