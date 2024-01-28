@@ -3,8 +3,7 @@
 import React from "react";
 import FormButtons from "../form-buttons";
 import { useFormState } from "react-dom";
-import { registerUser } from "./action";
-import { FormState } from "./action";
+import { registerUser, FormState } from "./action";
 
 const initialState: FormState | null = null;
 
