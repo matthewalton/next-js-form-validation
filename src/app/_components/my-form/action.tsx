@@ -5,7 +5,7 @@ import { z } from "zod";
 const schema = z.object({
   username: z.string(),
   email: z.string().email(),
-  password: z.string(),
+  password: z.string().min(8, "Password must be at least 8 characters long"),
   confirmPassword: z.string(),
 });
 
