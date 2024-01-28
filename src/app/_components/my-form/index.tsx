@@ -15,7 +15,7 @@ function MyForm() {
 
   return (
     <form
-      className="rounded-lg ring-1 ring-zinc-300 bg-zinc-100 p-6"
+      className="rounded-lg ring-1 ring-zinc-300 bg-zinc-100 p-6 duration-1000 ease-in-out animate-in fade-in slide-in-from-bottom-4"
       action={formAction}
     >
       <h2 className="text-base font-semibold leading-7 text-gray-900">
