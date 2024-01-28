@@ -10,6 +10,7 @@
 - [React](https://react.dev/) - Form Hooks
 - [Tailwind CSS](https://tailwindcss.com/docs) - CSS Framework
 - [Vercel](https://vercel.com/) - Hosting
+- [Zod](https://zod.dev/) - Form Validation
 
 ## Getting Started
 
