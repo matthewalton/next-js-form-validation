@@ -1,5 +1,6 @@
 "use server";
 
+import { redirect } from "next/navigation";
 import { z } from "zod";
 
 const schema = z.object({
@@ -37,5 +38,5 @@ export async function registerUser(
     };
   }
 
-  return null;
+  redirect("/registered");
 }
