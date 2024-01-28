@@ -45,6 +45,7 @@ function MyForm() {
                   ? "ring-pink-600 text-pink-600"
                   : "ring-gray-300 text-gray-900")
               }
+              autoFocus
               required
             />
             {formState?.errors?.username && (
