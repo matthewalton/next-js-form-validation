@@ -1,7 +1,7 @@
 <h1 align="center">Simple UX Form Validation</h1>
 
 <p align="center">
-  Need some quick and easy form validation with nice feedback for a better user experience? Use this simple template that utilises the experienmental (as of time of writing) React hook <a href="https://react.dev/reference/react-dom/hooks/useFormState">useFormState</a>!
+  Need some quick and easy form validation with nice feedback for a better user experience? Use this simple template that utilises the experimental (as of time of writing) React hook <a href="https://react.dev/reference/react-dom/hooks/useFormState">useFormState</a>!
 </p>
 
 ## Tech Stack
