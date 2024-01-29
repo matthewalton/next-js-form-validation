@@ -16,6 +16,21 @@ export const emailSchema = z
  * Password
  */
 
+const forbiddenPasswords = [
+  "password",
+  "12345678",
+  "123456789",
+  "qwerty123",
+  "password1",
+  "iloveyou",
+  "11111111",
+  "1234567890",
+  "123123123",
+];
+
 export const passwordSchema = z
   .string()
-  .min(8, "Password must be at least 8 characters");
+  .min(8, "Password must be at least 8 characters")
+  .refine((data) => !forbiddenPasswords.includes(data.toLowerCase()), {
+    message: `Password must not be a common, easily guessable password.`,
+  });
