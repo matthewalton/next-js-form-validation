@@ -8,6 +8,10 @@ const schema = z.object({
 });
 
 export async function validatePassword(str: string): Promise<string> {
+  if (str.length < 4) {
+    return "";
+  }
+
   const validatedFields = schema.safeParse({
     password: str,
   });
