@@ -6,7 +6,7 @@ import { useFormState } from "react-dom";
 import { registerUser, FormState } from "./action";
 import UsernameInput from "../form-inputs/username-input";
 import EmailInput from "../form-inputs/email-input";
-import PasswordInput from "../form-inputs/password-input";
+import PasswordInput from "../password-input.tsx";
 import ConfirmPasswordInput from "../form-inputs/confirm-password-input";
 
 const initialState: FormState | null = null;
