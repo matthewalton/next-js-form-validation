@@ -1,13 +1,14 @@
 "use server";
 
+import { emailSchema, passwordSchema, usernameSchema } from "@/schemas";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 
 const schema = z.object({
-  username: z.string().max(30, "Username must be under 30 characters"),
-  email: z.string().email().max(50, "Email must be under 30 characters"),
-  password: z.string().min(8),
-  confirmPassword: z.string().min(8),
+  username: usernameSchema,
+  email: emailSchema,
+  password: passwordSchema,
+  confirmPassword: passwordSchema,
 });
 
 export interface FormState {

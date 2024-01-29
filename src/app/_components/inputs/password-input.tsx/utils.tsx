@@ -1,9 +1,10 @@
 "use server";
 
+import { passwordSchema } from "@/schemas";
 import { z } from "zod";
 
 const schema = z.object({
-  password: z.string().min(8),
+  password: passwordSchema,
 });
 
 export async function validatePassword(str: string): Promise<string> {
