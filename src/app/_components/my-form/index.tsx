@@ -4,6 +4,10 @@ import React from "react";
 import FormButtons from "../form-buttons";
 import { useFormState } from "react-dom";
 import { registerUser, FormState } from "./action";
+import UsernameInput from "../form-inputs/username-input";
+import EmailInput from "../form-inputs/email-input";
+import PasswordInput from "../form-inputs/password-input";
+import ConfirmPasswordInput from "../form-inputs/confirm-password-input";
 
 const initialState: FormState | null = null;
 
@@ -25,115 +29,19 @@ function MyForm() {
 
       <div className="mt-5 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-6">
         <div className="sm:col-span-6">
-          <label
-            htmlFor="username"
-            className="block text-sm font-medium leading-6 text-gray-900"
-          >
-            Username
-          </label>
-          <div className="mt-2">
-            <input
-              type="text"
-              name="username"
-              id="username"
-              autoComplete="username"
-              className={
-                `block w-full rounded-md py-1.5 px-2 shadow-sm ring-1 focus:ring-2 focus:outline-none placeholder:text-gray-400 sm:text-sm sm:leading-6 ` +
-                (formState?.errors?.username
-                  ? "ring-pink-600 text-pink-600"
-                  : "ring-gray-300 text-gray-900")
-              }
-              autoFocus
-              required
-            />
-            {formState?.errors?.username && (
-              <p className="mt-2 text-pink-600 text-xs">
-                {formState.errors.username}
-              </p>
-            )}
-          </div>
+          <UsernameInput errorMessage={formState?.errors?.username} />
         </div>
 
         <div className="sm:col-span-6">
-          <label
-            htmlFor="email"
-            className="block text-sm font-medium leading-6 text-gray-900"
-          >
-            Email address
-          </label>
-          <div className="mt-2">
-            <input
-              id="email"
-              name="email"
-              type="email"
-              autoComplete="email"
-              className={
-                `block w-full rounded-md py-1.5 px-2 shadow-sm ring-1 focus:ring-2 focus:outline-none placeholder:text-gray-400 sm:text-sm sm:leading-6 ` +
-                (formState?.errors?.email
-                  ? "ring-pink-600 text-pink-600"
-                  : "ring-gray-300 text-gray-900")
-              }
-              required
-            />
-          </div>
-          {formState?.errors?.email && (
-            <p className="mt-2 text-pink-600 text-xs">
-              {formState.errors.email}
-            </p>
-          )}
+          <EmailInput errorMessage={formState?.errors?.email} />
         </div>
 
         <div className="sm:col-span-3">
-          <label
-            htmlFor="password"
-            className="block text-sm font-medium leading-6 text-gray-900"
-          >
-            Password
-          </label>
-          <div className="mt-2">
-            <input
-              type="password"
-              name="password"
-              id="password"
-              autoComplete="password"
-              className={
-                `block w-full rounded-md py-1.5 px-2 shadow-sm ring-1 focus:ring-2 focus:outline-none placeholder:text-gray-400 sm:text-sm sm:leading-6 ` +
-                (formState?.errors?.password
-                  ? "ring-pink-600 text-pink-600"
-                  : "ring-gray-300 text-gray-900")
-              }
-              required
-            />
-          </div>
-          {formState?.errors?.password && (
-            <p className="mt-2 text-pink-600 text-xs">
-              {formState.errors.password}
-            </p>
-          )}
+          <PasswordInput errorMessage={formState?.errors?.password} />
         </div>
 
         <div className="sm:col-span-3">
-          <label
-            htmlFor="confirm-password"
-            className="block text-sm font-medium leading-6 text-gray-900"
-          >
-            Confirm password
-          </label>
-          <div className="mt-2">
-            <input
-              type="password"
-              name="confirm-password"
-              id="confirm-password"
-              autoComplete="password"
-              className={
-                `block w-full rounded-md py-1.5 px-2 shadow-sm ring-1 focus:ring-2 focus:outline-none placeholder:text-gray-400 sm:text-sm sm:leading-6 ` +
-                (formState?.errors?.password
-                  ? "ring-pink-600 text-pink-600"
-                  : "ring-gray-300 text-gray-900")
-              }
-              required
-            />
-          </div>
+          <ConfirmPasswordInput errorMessage={formState?.errors?.password} />
         </div>
       </div>
 
