@@ -4,9 +4,6 @@ import React from "react";
 import FormButtons from "../form-buttons";
 import { useFormState } from "react-dom";
 import { registerUser, FormState, validateInput } from "./action";
-import UsernameInput from "../inputs/username-input";
-import EmailInput from "../inputs/email-input";
-import ConfirmPasswordInput from "../inputs/confirm-password-input";
 import FormInput from "../form-input";
 
 const initialState: FormState | null = null;
@@ -40,11 +37,25 @@ function MyForm() {
 
       <div className="mt-5 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-6">
         <div className="sm:col-span-6">
-          <UsernameInput errorMessage={formState?.errors?.username} />
+          <FormInput
+            handleValidateInput={handleValidateInput}
+            label="Username"
+            id="username"
+            type="text"
+            autoComplete="username"
+            errorMessage={formState?.errors?.username}
+          />
         </div>
 
         <div className="sm:col-span-6">
-          <EmailInput errorMessage={formState?.errors?.email} />
+          <FormInput
+            handleValidateInput={handleValidateInput}
+            label="Email address"
+            id="email"
+            type="email"
+            autoComplete="email"
+            errorMessage={formState?.errors?.email}
+          />
         </div>
 
         <div className="sm:col-span-3">
@@ -59,7 +70,14 @@ function MyForm() {
         </div>
 
         <div className="sm:col-span-3">
-          <ConfirmPasswordInput errorMessage={formState?.errors?.password} />
+          <FormInput
+            handleValidateInput={handleValidateInput}
+            label="Confirm password"
+            id="confirm-password"
+            type="password"
+            autoComplete="password"
+            errorMessage={formState?.errors?.password}
+          />
         </div>
       </div>
 
