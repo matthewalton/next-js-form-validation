@@ -11,17 +11,6 @@ const initialState: FormState | null = null;
 function MyForm() {
   const [formState, formAction] = useFormState(registerUser, initialState);
 
-  const handleValidateInput = async ({
-    currentTarget,
-  }: React.ChangeEvent<HTMLInputElement>) => {
-    const message = await validateInput(
-      currentTarget.value,
-      currentTarget.name
-    );
-
-    return message;
-  };
-
   return (
     <form
       className="rounded-lg ring-1 ring-zinc-300 bg-zinc-100 p-6 duration-1000 ease-in-out animate-in fade-in slide-in-from-bottom-4 w-full max-w-2xl"
@@ -38,7 +27,6 @@ function MyForm() {
       <div className="mt-5 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-6">
         <div className="sm:col-span-6">
           <FormInput
-            handleValidateInput={handleValidateInput}
             label="Username"
             id="username"
             type="text"
@@ -49,7 +37,6 @@ function MyForm() {
 
         <div className="sm:col-span-6">
           <FormInput
-            handleValidateInput={handleValidateInput}
             label="Email address"
             id="email"
             type="email"
@@ -60,7 +47,6 @@ function MyForm() {
 
         <div className="sm:col-span-3">
           <FormInput
-            handleValidateInput={handleValidateInput}
             label="Password"
             id="password"
             type="password"
@@ -71,7 +57,6 @@ function MyForm() {
 
         <div className="sm:col-span-3">
           <FormInput
-            handleValidateInput={handleValidateInput}
             label="Confirm password"
             id="confirm-password"
             type="password"

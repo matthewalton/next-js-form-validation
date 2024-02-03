@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { validateInput } from "../my-form/action";
 
 type Props = {
   errorMessage?: string;
-  handleValidateInput: (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => Promise<string>;
   label: string;
   id: string;
   type: string;
@@ -14,7 +12,6 @@ type Props = {
 
 function FormInput({
   errorMessage,
-  handleValidateInput,
   label,
   id,
   type,
@@ -23,12 +20,17 @@ function FormInput({
 }: Props) {
   const [liveMessage, setLiveMessage] = useState(errorMessage);
 
-  const handleInputChange = async (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleInputChange = async ({
+    currentTarget,
+  }: React.ChangeEvent<HTMLInputElement>) => {
     if (!showErrorMessage) return;
 
-    setLiveMessage(await handleValidateInput(event));
+    const message = await validateInput(
+      currentTarget.value,
+      currentTarget.name
+    );
+
+    setLiveMessage(message);
   };
 
   useEffect(() => {
