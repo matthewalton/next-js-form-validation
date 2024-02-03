@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { validatePassword } from "./utils";
+import { validateInput } from "../../my-form/action";
 
 type Props = {
   errorMessage?: string;
@@ -11,7 +11,10 @@ function PasswordInput({ errorMessage }: Props) {
   const handlePasswordCheck = async ({
     currentTarget,
   }: React.ChangeEvent<HTMLInputElement>) => {
-    const message = await validatePassword(currentTarget.value);
+    const message = await validateInput(
+      currentTarget.value,
+      currentTarget.name
+    );
     setLiveMessage(message);
   };
 

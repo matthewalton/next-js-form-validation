@@ -16,6 +16,10 @@ export interface FormState {
   errors?: any;
 }
 
+interface Errors {
+  [key: string]: string[] | undefined;
+}
+
 export async function registerUser(
   prevFormState: FormState | null,
   formData: FormData
@@ -46,4 +50,27 @@ export async function registerUser(
   }
 
   redirect("/registered");
+}
+
+export async function validateInput(
+  value: string,
+  name: string
+): Promise<string> {
+  const validatedFields = schema.safeParse({
+    [name]: value,
+  });
+
+  if (!validatedFields.success) {
+    const allErrors: Errors = validatedFields.error.flatten().fieldErrors;
+
+    if (allErrors) {
+      const errors = allErrors[name];
+
+      if (errors) {
+        return errors[0];
+      }
+    }
+  }
+
+  return "";
 }
