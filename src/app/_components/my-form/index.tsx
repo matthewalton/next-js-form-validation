@@ -6,8 +6,8 @@ import { useFormState } from "react-dom";
 import { registerUser, FormState, validateInput } from "./action";
 import UsernameInput from "../inputs/username-input";
 import EmailInput from "../inputs/email-input";
-import PasswordInput from "../inputs/password-input.tsx";
 import ConfirmPasswordInput from "../inputs/confirm-password-input";
+import FormInput from "../form-input";
 
 const initialState: FormState | null = null;
 
@@ -48,9 +48,13 @@ function MyForm() {
         </div>
 
         <div className="sm:col-span-3">
-          <PasswordInput
-            errorMessage={formState?.errors?.password}
+          <FormInput
             handleValidateInput={handleValidateInput}
+            label="Password"
+            id="password"
+            type="password"
+            autoComplete="password"
+            errorMessage={formState?.errors?.password}
           />
         </div>
 
