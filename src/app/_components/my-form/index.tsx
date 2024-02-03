@@ -3,7 +3,7 @@
 import React from "react";
 import FormButtons from "../form-buttons";
 import { useFormState } from "react-dom";
-import { registerUser, FormState } from "./action";
+import { registerUser, FormState, validateInput } from "./action";
 import UsernameInput from "../inputs/username-input";
 import EmailInput from "../inputs/email-input";
 import PasswordInput from "../inputs/password-input.tsx";
@@ -13,6 +13,17 @@ const initialState: FormState | null = null;
 
 function MyForm() {
   const [formState, formAction] = useFormState(registerUser, initialState);
+
+  const handleValidateInput = async ({
+    currentTarget,
+  }: React.ChangeEvent<HTMLInputElement>) => {
+    const message = await validateInput(
+      currentTarget.value,
+      currentTarget.name
+    );
+
+    return message;
+  };
 
   return (
     <form
@@ -37,7 +48,10 @@ function MyForm() {
         </div>
 
         <div className="sm:col-span-3">
-          <PasswordInput errorMessage={formState?.errors?.password} />
+          <PasswordInput
+            errorMessage={formState?.errors?.password}
+            handleValidateInput={handleValidateInput}
+          />
         </div>
 
         <div className="sm:col-span-3">

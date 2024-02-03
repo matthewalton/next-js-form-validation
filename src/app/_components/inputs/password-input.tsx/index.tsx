@@ -1,22 +1,24 @@
-import React, { useState } from "react";
-import { validateInput } from "../../my-form/action";
+import React, { useEffect, useState } from "react";
 
 type Props = {
   errorMessage?: string;
+  handleValidateInput: (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => Promise<string>;
 };
 
-function PasswordInput({ errorMessage }: Props) {
+function PasswordInput({ errorMessage, handleValidateInput }: Props) {
   const [liveMessage, setLiveMessage] = useState(errorMessage);
 
-  const handlePasswordCheck = async ({
-    currentTarget,
-  }: React.ChangeEvent<HTMLInputElement>) => {
-    const message = await validateInput(
-      currentTarget.value,
-      currentTarget.name
-    );
-    setLiveMessage(message);
+  const handleInputChange = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setLiveMessage(await handleValidateInput(event));
   };
+
+  useEffect(() => {
+    setLiveMessage(errorMessage);
+  }, [errorMessage]);
 
   return (
     <>
@@ -39,7 +41,7 @@ function PasswordInput({ errorMessage }: Props) {
               : "ring-gray-300 text-gray-900")
           }
           required
-          onChange={handlePasswordCheck}
+          onChange={handleInputChange}
         />
       </div>
       {liveMessage && (
