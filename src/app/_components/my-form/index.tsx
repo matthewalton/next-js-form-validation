@@ -20,9 +20,9 @@ function MyForm() {
         User Registration
       </h2>
       <p className="mt-1 text-sm leading-6 text-gray-600">
-        Please enter your details to complete registration. (Just a demo - no
-        details are collected.)
+        Please enter your details to complete registration.
       </p>
+      <p className="text-xs italic text-gray-600">No details are collected</p>
 
       <div className="mt-5 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-6">
         <div className="sm:col-span-6">
