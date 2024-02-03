@@ -9,6 +9,7 @@ type Props = {
   id: string;
   type: string;
   autoComplete?: string;
+  showErrorMessage?: boolean;
 };
 
 function FormInput({
@@ -18,12 +19,15 @@ function FormInput({
   id,
   type,
   autoComplete,
+  showErrorMessage = true,
 }: Props) {
   const [liveMessage, setLiveMessage] = useState(errorMessage);
 
   const handleInputChange = async (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
+    if (!showErrorMessage) return;
+
     setLiveMessage(await handleValidateInput(event));
   };
 
@@ -56,7 +60,7 @@ function FormInput({
         />
       </div>
 
-      {liveMessage && (
+      {showErrorMessage && liveMessage && (
         <p className="mt-2 text-pink-600 text-xs">{liveMessage}</p>
       )}
     </>
