@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { validateInput } from "../my-form/action";
 import { CheckCircleIcon, XCircleIcon } from "@heroicons/react/16/solid";
 import { useFormStatus } from "react-dom";
-import Loader from "../loader";
 
 type Props = {
   errorMessage?: string;
