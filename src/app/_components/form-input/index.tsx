@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { validateInput } from "../my-form/action";
 import { CheckCircleIcon, XCircleIcon } from "@heroicons/react/16/solid";
+import { useFormStatus } from "react-dom";
 
 type Props = {
   errorMessage?: string;
@@ -13,6 +14,7 @@ type Props = {
 function FormInput({ errorMessage, label, id, type, autoComplete }: Props) {
   const [liveErrorMessage, setLiveErrorMessage] = useState(errorMessage);
   const [hasValue, setHasValue] = useState(false);
+  const { pending } = useFormStatus();
 
   const handleInputChange = async ({
     currentTarget,
@@ -46,7 +48,7 @@ function FormInput({ errorMessage, label, id, type, autoComplete }: Props) {
           id={id}
           autoComplete={autoComplete}
           className={
-            `block w-full rounded-md py-1.5 px-2 shadow-sm ring-1 focus:ring-2 focus:outline-none placeholder:text-gray-400 sm:text-sm sm:leading-6 ` +
+            `block w-full rounded-md py-1.5 px-2 shadow-sm ring-1 focus:ring-2 focus:outline-none placeholder:text-gray-400 sm:text-sm sm:leading-6 disabled:opacity-50 disabled:bg-white ` +
             (!hasValue
               ? "ring-gray-300 text-gray-900"
               : liveErrorMessage
@@ -54,6 +56,7 @@ function FormInput({ errorMessage, label, id, type, autoComplete }: Props) {
               : "ring-emerald-500 text-emerald-500")
           }
           required
+          disabled={pending}
           onChange={handleInputChange}
         />
 
