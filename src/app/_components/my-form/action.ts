@@ -11,7 +11,7 @@ const schema = z.object({
   confirmPassword: passwordSchema,
 });
 
-export interface FormState {
+interface FormState {
   message?: string;
   errors?: any;
 }
