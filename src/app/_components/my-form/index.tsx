@@ -3,13 +3,11 @@
 import React from "react";
 import FormButtons from "../form-buttons";
 import { useFormState } from "react-dom";
-import { registerUser, FormState } from "./action";
+import { registerUser } from "./action";
 import FormInput from "../form-input";
 
-const initialState: FormState | null = null;
-
 function MyForm() {
-  const [formState, formAction] = useFormState(registerUser, initialState);
+  const [formState, formAction] = useFormState(registerUser, null);
 
   return (
     <form
