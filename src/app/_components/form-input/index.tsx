@@ -30,8 +30,10 @@ function FormInput({ errorMessage, label, id, type, autoComplete }: Props) {
   };
 
   useEffect(() => {
-    setLiveErrorMessage(errorMessage);
-  }, [errorMessage]);
+    if (!pending) {
+      setLiveErrorMessage(errorMessage);
+    }
+  }, [errorMessage, pending]);
 
   return (
     <>
