@@ -76,7 +76,9 @@ function FormInput({ errorMessage, label, id, type, autoComplete }: Props) {
       </div>
 
       {hasValue && liveErrorMessage && (
-        <p className="mt-2 text-pink-600 text-xs">{liveErrorMessage}</p>
+        <p className="mt-2 text-pink-600 text-xs animate-in ease-in-out fade-in slide-in-from-top">
+          {liveErrorMessage}
+        </p>
       )}
     </>
   );

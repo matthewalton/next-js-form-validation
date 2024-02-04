@@ -64,7 +64,7 @@ function MyForm() {
       </div>
 
       {formState?.message && (
-        <p className="text-sm text-pink-600 mt-5 text-right">
+        <p className="text-sm text-pink-600 mt-5 text-right animate-in ease-in-out fade-in slide-in-from-top">
           {formState.message}
         </p>
       )}
