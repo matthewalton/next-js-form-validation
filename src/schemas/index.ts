@@ -9,7 +9,7 @@ export const usernameSchema = z
 
 export const emailSchema = z
   .string()
-  .email()
+  .email("Email must be a valid email address")
   .max(50, "Email must be under 30 characters");
 
 /**

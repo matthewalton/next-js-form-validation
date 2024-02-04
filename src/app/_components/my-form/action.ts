@@ -29,7 +29,7 @@ export async function registerUser(
       username: formData.get("username"),
       email: formData.get("email"),
       password: formData.get("password"),
-      confirmPassword: formData.get("confirm-password"),
+      confirmPassword: formData.get("confirmPassword"),
     });
 
     if (!validatedFields.success) {
@@ -42,7 +42,9 @@ export async function registerUser(
       validatedFields.data.password !== validatedFields.data.confirmPassword
     ) {
       return {
-        errors: { password: "Passwords do not match" },
+        errors: {
+          confirmPassword: "Passwords do not match",
+        },
       };
     }
   } catch (e) {

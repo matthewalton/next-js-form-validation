@@ -3,7 +3,7 @@
 import React from "react";
 import FormButtons from "../form-buttons";
 import { useFormState } from "react-dom";
-import { registerUser, FormState, validateInput } from "./action";
+import { registerUser, FormState } from "./action";
 import FormInput from "../form-input";
 
 const initialState: FormState | null = null;
@@ -22,7 +22,6 @@ function MyForm() {
       <p className="mt-1 text-sm leading-6 text-gray-600">
         Please enter your details to complete registration.
       </p>
-      <p className="text-xs italic text-gray-600">No details are collected</p>
 
       <div className="mt-5 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-6">
         <div className="sm:col-span-6">
@@ -58,11 +57,10 @@ function MyForm() {
         <div className="sm:col-span-3">
           <FormInput
             label="Confirm password"
-            id="confirm-password"
+            id="confirmPassword"
             type="password"
             autoComplete="password"
-            errorMessage={formState?.errors?.password}
-            showErrorMessage={false}
+            errorMessage={formState?.errors?.confirmPassword}
           />
         </div>
       </div>
