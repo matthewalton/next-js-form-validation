@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { validateInput } from "../my-form/action";
 import { CheckCircleIcon, XCircleIcon } from "@heroicons/react/16/solid";
 import { useFormStatus } from "react-dom";
+import Loader from "../loader";
 
 type Props = {
   errorMessage?: string;
@@ -14,6 +15,7 @@ type Props = {
 function FormInput({ errorMessage, label, id, type, autoComplete }: Props) {
   const [liveErrorMessage, setLiveErrorMessage] = useState(errorMessage);
   const [hasValue, setHasValue] = useState(false);
+  const [isValidating, setIsValidating] = useState(false);
   const { pending } = useFormStatus();
 
   const handleInputChange = async ({
@@ -21,12 +23,15 @@ function FormInput({ errorMessage, label, id, type, autoComplete }: Props) {
   }: React.ChangeEvent<HTMLInputElement>) => {
     setHasValue(currentTarget.value !== "");
 
+    setIsValidating(true);
+
     const message = await validateInput(
       currentTarget.value,
       currentTarget.name
     );
 
     setLiveErrorMessage(message);
+    setIsValidating(false);
   };
 
   useEffect(() => {
@@ -51,7 +56,7 @@ function FormInput({ errorMessage, label, id, type, autoComplete }: Props) {
           autoComplete={autoComplete}
           className={
             `block w-full rounded-md py-1.5 px-2 shadow-sm ring-1 focus:ring-2 focus:outline-none placeholder:text-gray-400 sm:text-sm sm:leading-6 disabled:opacity-50 disabled:bg-white ` +
-            (!hasValue
+            (!hasValue || isValidating
               ? "ring-gray-300 text-gray-900"
               : liveErrorMessage
               ? "ring-pink-600 text-pink-600"
@@ -62,25 +67,28 @@ function FormInput({ errorMessage, label, id, type, autoComplete }: Props) {
           onChange={handleInputChange}
         />
 
-        {hasValue && (
-          <div className="absolute inset-y-0 right-2 flex items-center">
-            {!liveErrorMessage && (
-              <CheckCircleIcon
-                className="h-5 w-5 text-emerald-600"
-                aria-hidden="true"
-              />
-            )}
-            {liveErrorMessage && (
-              <XCircleIcon
-                className="h-5 w-5 text-pink-600"
-                aria-hidden="true"
-              />
-            )}
-          </div>
-        )}
+        <div className="absolute inset-y-0 right-2 flex items-center">
+          {isValidating && <Loader />}
+          {!isValidating && hasValue && (
+            <>
+              {!liveErrorMessage && (
+                <CheckCircleIcon
+                  className="h-5 w-5 text-emerald-600"
+                  aria-hidden="true"
+                />
+              )}
+              {liveErrorMessage && (
+                <XCircleIcon
+                  className="h-5 w-5 text-pink-600"
+                  aria-hidden="true"
+                />
+              )}
+            </>
+          )}
+        </div>
       </div>
 
-      {hasValue && liveErrorMessage && (
+      {hasValue && liveErrorMessage && !isValidating && (
         <p className="mt-2 text-pink-600 text-xs animate-in ease-in-out fade-in slide-in-from-top">
           {liveErrorMessage}
         </p>
